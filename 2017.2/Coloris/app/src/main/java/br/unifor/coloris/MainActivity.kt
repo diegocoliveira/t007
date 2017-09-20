@@ -1,5 +1,6 @@
 package br.unifor.coloris
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
@@ -37,6 +38,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when(view?.id){
 
             R.id.main_button_get_color -> callColorActivity()
+
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        when(requestCode){
+
+            COLOR_ACTIVITY_ID -> uptadeViewBackground(resultCode, data)
+
+        }
+
+    }
+
+    private fun uptadeViewBackground(resultCode: Int, data: Intent?) {
+
+        when(resultCode){
+
+            Activity.RESULT_OK -> {
+
+                red = data?.getIntExtra("red", 0) ?: 0
+                green = data?.getIntExtra("green", 0) ?: 0
+                blue = data?.getIntExtra("blue", 0) ?: 0
+
+                mViewColor.setBackgroundColor(Color.rgb(red, green, blue))
+
+            }
 
         }
 

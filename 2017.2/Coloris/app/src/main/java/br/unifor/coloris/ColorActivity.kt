@@ -50,17 +50,9 @@ class ColorActivity : AppCompatActivity(), View.OnClickListener {
         backIntent.putExtra("blue", mSeekbarBlue.progress)
 
         setResult(Activity.RESULT_OK, backIntent)
+
         finish()
 
     }
-
-
-
-
-
-
-
-
-
 
 }
