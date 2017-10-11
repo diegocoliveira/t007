@@ -1,3 +1,3 @@
 package br.unifor.muvis.entity
 
-data class Category(val id:Long, val name:String)
+data class Category(override val id:Long, val name:String): Model
