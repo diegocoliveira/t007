@@ -10,16 +10,19 @@ class MuvisDatabase(context: Context) :
     val context = context
 
     override fun onCreate(db: SQLiteDatabase?) {
-        executeSql(db, "/db/create.sql")
+        executeSql(db, "db/create.sql")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        executeSql(db, "/db/update.sql")
+        executeSql(db, "db/update.sql")
     }
 
     private fun executeSql(db: SQLiteDatabase?, path:String) {
         val createSql = context.assets.open(path)
-        createSql.bufferedReader().useLines { lines -> lines.forEach { db?.execSQL(it) } }
+        createSql.bufferedReader().useLines { lines ->
+            lines.forEach {
+                db?.execSQL(it) }
+        }
     }
 
 }
